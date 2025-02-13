@@ -1,15 +1,31 @@
 // import React from 'react'
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Header from "./Header";
+import { checkValidData } from "./utils/Validate";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
+  const[errorMessage, setErrorMessage] = useState('');
+
+  const email = useRef(null);
+  const password = useRef(null);
+  const handleClick = (e) => {
+    e.preventDefault();
+    // validate the  form data
+
+    console.log(email.current.value);
+    console.log(password.current.value);
+
+    const msg = checkValidData(email.current.value, password.current.value);
+    setErrorMessage(msg);
+    // console.log(msg);
+  };
   const toggleSingInform = () => {
     setIsSignInForm(!isSignInForm);
   };
   return (
-    <div className="flex flex-col justify-between overflow-x-hidden">
+    <div className="flex flex-col justify-between overflow-x-hidden z-10">
       <Header />
 
       <div class="h-screen w-screen overflow-hidden brightness-50">
@@ -20,25 +36,33 @@ const Login = () => {
       </div>
 
       {/* this the login form  */}
-      <div className=" mt-[54px]  w-[460px]  absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2  text-[#FFFFFF] font-semibold flex flex-col p-10 bg-black opacity-75 min-h-auto overflow-hidden">
+      <div className=" mt-[54px]  w-[460px]  absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2  text-[#FFFFFF] font-semibold flex flex-col p-10 bg-black opacity-75 min-h-auto overflow-hidden ">
         <header className="text-4xl font-bold mb-6">
           <h1> {isSignInForm ? "Sign In" : "Sign Up"}</h1>
         </header>
 
-        <form className="  flex flex-col  gap-5 ">
+        <form
+          onSubmit={(e) => e.preventDefault()}
+          className="  flex flex-col  gap-5 "
+        >
           <input
+            ref={email}
             type="text"
             placeholder="Email or Phone Number"
             className="p-4  min-w-full rounded-sm outline outline-white placeholder-white "
           ></input>
 
           <input
+            ref={password}
             type="password"
             placeholder="Password"
             className="p-4 rounded-sm outline outline-white  min-w-full  placeholder-white"
           ></input>
-          <button className="p-2.5  min-w-full bg-red-700 rounded-sm  hover:bg-amber-800">
-            {isSignInForm ? "Sig In" : "Sing Up"}
+          <button
+            className="p-2.5  min-w-full bg-red-700 rounded-sm  hover:bg-amber-800"
+            onClick={handleClick}
+          >
+            {isSignInForm ? "Sign In" : "Sign Up"}
           </button>
 
           <h3 className="min-w-full   text-center">OR</h3>
@@ -53,6 +77,7 @@ const Login = () => {
             Forget Password
           </a>
         </form>
+        <p className="text-red-600 text-center text-xl">{errorMessage}</p>
 
         <footer className="p-4  min-w-full  flex flex-col gap-3.5 mb-10 mt-10">
           {isSignInForm ? (
@@ -82,9 +107,16 @@ const Login = () => {
             </>
           ) : (
             <div className="items-center m-auto ">
-            <h1 className="text-4xl text-center mb-8 text-red-600">Welcome back </h1>
-            <span className="text-center ml-8 ">Have a account - </span>
-            <button onClick={toggleSingInform} className=" ml-1 text-center hover:underline text-red-600" >Sign In</button>
+              <h1 className="text-4xl text-center mb-8 text-red-600">
+                Welcome back{" "}
+              </h1>
+              <span className="text-center ml-8 ">Have a account - </span>
+              <button
+                onClick={toggleSingInform}
+                className=" ml-1 text-center hover:underline text-red-600"
+              >
+                Sign In
+              </button>
             </div>
           )}
         </footer>
