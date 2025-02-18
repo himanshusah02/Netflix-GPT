@@ -11,6 +11,7 @@
 - Firebase setup
 - deploying our app to firebase server
 - create sign up user account
+- create SignIn
 
 # Features 
 - Login / Signup

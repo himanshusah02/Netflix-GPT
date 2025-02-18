@@ -1,12 +1,19 @@
 // import React from 'react'
-
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  updateProfile,
+} from "firebase/auth";
 import { useRef, useState } from "react";
 import Header from "./Header";
 import { checkValidData } from "./utils/Validate";
+import { auth } from "./utils/firebase";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
-  const[errorMessage, setErrorMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState("");
+  const navigate = useNavigate();
 
   const email = useRef(null);
   const password = useRef(null);
@@ -14,12 +21,65 @@ const Login = () => {
     e.preventDefault();
     // validate the  form data
 
-    console.log(email.current.value);
-    console.log(password.current.value);
+    const message = checkValidData(email.current.value, password.current.value);
+    setErrorMessage(message);
 
-    const msg = checkValidData(email.current.value, password.current.value);
-    setErrorMessage(msg);
-    // console.log(msg);
+    if (message) return;
+    // sign in / sign up
+
+    if (!isSignInForm) {
+      // Sign up logic
+      createUserWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          // Signed up
+          const user = userCredential.user;
+          updateProfile(user, {
+            displayName: "himanshu",
+            photoURL:"https://github.com/harshitsah007.png",
+          })
+            .then(() => {
+              // Profile updated!
+              navigate("/browse");
+              // ...
+            })
+            .catch((error) => {
+              // An error occurred
+              setErrorMessage(error.message);
+              // ...
+            });
+          console.log(user);
+          // ...
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrorMessage(errorCode + "-" + errorMessage);
+          // ..
+        });
+    } else {
+      //  sign in logic
+      signInWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+          console.log(user);
+          navigate("/browse");
+          // ...
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrorMessage(errorCode + "-" + errorMessage);
+        });
+    }
   };
   const toggleSingInform = () => {
     setIsSignInForm(!isSignInForm);
@@ -36,6 +96,7 @@ const Login = () => {
       </div>
 
       {/* this the login form  */}
+
       <div className=" mt-[54px]  w-[460px]  absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2  text-[#FFFFFF] font-semibold flex flex-col p-10 bg-black opacity-75 min-h-auto overflow-hidden ">
         <header className="text-4xl font-bold mb-6">
           <h1> {isSignInForm ? "Sign In" : "Sign Up"}</h1>
