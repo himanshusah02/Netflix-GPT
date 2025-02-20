@@ -9,19 +9,23 @@ import Header from "./Header";
 import { checkValidData } from "./utils/Validate";
 import { auth } from "./utils/firebase";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addUser } from "./utils/userSlice";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const email = useRef(null);
   const password = useRef(null);
+  const displayName = useRef(null);
   const handleClick = (e) => {
     e.preventDefault();
     // validate the  form data
 
-    const message = checkValidData(email.current.value, password.current.value);
+    const message = checkValidData(email.current.value, password.current.value );
     setErrorMessage(message);
 
     if (message) return;
@@ -32,17 +36,27 @@ const Login = () => {
       createUserWithEmailAndPassword(
         auth,
         email.current.value,
-        password.current.value
+        password.current.value,
+        
       )
         .then((userCredential) => {
           // Signed up
           const user = userCredential.user;
           updateProfile(user, {
-            displayName: "himanshu",
-            photoURL:"https://github.com/harshitsah007.png",
+            displayName: displayName,
+            photoURL: "https://github.com/harshitsah007.png",
           })
             .then(() => {
               // Profile updated!
+              const { uid, email, displayName, photoURL } = auth.currentUser;
+              dispatch(
+                addUser({
+                  uid: uid,
+                  email: email,
+                  displayName: displayName,
+                  photoURL: photoURL,
+                })
+              );
               navigate("/browse");
               // ...
             })
@@ -88,7 +102,7 @@ const Login = () => {
     <div className="flex flex-col justify-between overflow-x-hidden z-10">
       <Header />
 
-      <div class="h-screen w-screen overflow-hidden brightness-50">
+      <div className="h-screen w-screen overflow-hidden brightness-50">
         <img
           src="https://assets.nflxext.com/ffe/siteui/vlv3/fb5cb900-0cb6-4728-beb5-579b9af98fdd/web/IN-en-20250127-TRIFECTA-perspective_cf66f5a3-d894-4185-9106-5f45502fc387_small.jpg"
           alt=""
@@ -106,6 +120,17 @@ const Login = () => {
           onSubmit={(e) => e.preventDefault()}
           className="  flex flex-col  gap-5 "
         >
+          {!isSignInForm ? (
+            <input
+              ref={displayName}
+              type="text"
+              placeholder="Enter your Name..."
+              className="p-4  min-w-full rounded-sm outline outline-white placeholder-white "
+            ></input>
+          ) : (
+            <h1>WellCome Back</h1>
+          )}
+
           <input
             ref={email}
             type="text"
@@ -169,7 +194,7 @@ const Login = () => {
           ) : (
             <div className="items-center m-auto ">
               <h1 className="text-4xl text-center mb-8 text-red-600">
-                Welcome back{" "}
+                Happy to see u again
               </h1>
               <span className="text-center ml-8 ">Have a account - </span>
               <button
@@ -183,7 +208,7 @@ const Login = () => {
         </footer>
       </div>
       <footer className="w-screen min-h-96 bg-black">
-        <h1>hell footer</h1>
+        <h1>hello footer</h1>
       </footer>
     </div>
   );
