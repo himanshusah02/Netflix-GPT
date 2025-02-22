@@ -6,12 +6,14 @@ import {
 } from "firebase/auth";
 import { useRef, useState } from "react";
 import Header from "./Header";
-import { checkValidData } from "./utils/Validate";
-import { auth } from "./utils/firebase";
+import { checkValidData } from "../utils/Validate";
+
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { addUser } from "./utils/userSlice";
-import { USER_AVTAR } from "./utils/Constants";
+
+import { USER_AVTAR } from "../utils/Constants";
+import { addUser } from "../utils/userSlice";
+import { auth } from "../utils/firebase";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
@@ -23,8 +25,7 @@ const Login = () => {
   const password = useRef(null);
   const displayName = useRef(null);
 
-
-  console.log(displayName);
+  // console.log(displayName);
   const handleClick = (e) => {
     e.preventDefault();
     // validate the  form data
@@ -40,9 +41,7 @@ const Login = () => {
       createUserWithEmailAndPassword(
         auth,
         email.current.value,
-        password.current.value,
-        
-
+        password.current.value
       )
         .then((userCredential) => {
           // Signed up
@@ -68,7 +67,7 @@ const Login = () => {
               setErrorMessage(error.message);
               // ...
             });
-          console.log(user);
+          // console.log(user);
           // ...
         })
         .catch((error) => {
@@ -87,7 +86,7 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          console.log(user);
+          // console.log(user);
           navigate("/browse");
           // ...
         })
