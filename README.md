@@ -12,6 +12,9 @@
 - deploying our app to firebase server
 - create sign up user account
 - create SignIn
+-BugFix - Signup user displayName and profile picture update
+-BugFix - if the user is not logged in that is not redirect to the /browse page
+- unsubscribe() to the onAuthStateChanged callback
 
 # Features 
 - Login / Signup

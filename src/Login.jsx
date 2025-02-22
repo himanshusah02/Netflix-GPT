@@ -11,6 +11,7 @@ import { auth } from "./utils/firebase";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from "./utils/userSlice";
+import { USER_AVTAR } from "./utils/Constants";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
@@ -21,11 +22,14 @@ const Login = () => {
   const email = useRef(null);
   const password = useRef(null);
   const displayName = useRef(null);
+
+
+  console.log(displayName);
   const handleClick = (e) => {
     e.preventDefault();
     // validate the  form data
 
-    const message = checkValidData(email.current.value, password.current.value );
+    const message = checkValidData(email.current.value, password.current.value);
     setErrorMessage(message);
 
     if (message) return;
@@ -38,13 +42,14 @@ const Login = () => {
         email.current.value,
         password.current.value,
         
+
       )
         .then((userCredential) => {
           // Signed up
           const user = userCredential.user;
           updateProfile(user, {
-            displayName: displayName,
-            photoURL: "https://github.com/harshitsah007.png",
+            displayName: displayName.current.value,
+            photoURL: USER_AVTAR,
           })
             .then(() => {
               // Profile updated!
@@ -57,8 +62,6 @@ const Login = () => {
                   photoURL: photoURL,
                 })
               );
-              navigate("/browse");
-              // ...
             })
             .catch((error) => {
               // An error occurred
