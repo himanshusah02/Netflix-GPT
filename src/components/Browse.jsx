@@ -9,7 +9,7 @@ const Browse = () => {
   useNowPlayingMovies();
   return (
     <div>
-      <Header></Header>
+      <Header />
       {/* 
 mainContainer
  - videoBackground
@@ -20,7 +20,7 @@ mainContainer
 
 */}
       <MainContainer />
-      <SecondaryContainer/>
+      <SecondaryContainer />
     </div>
   );
 };

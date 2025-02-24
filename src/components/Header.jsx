@@ -51,7 +51,7 @@ const Header = () => {
 
   return (
     <div>
-      <div className="absolute w-full bg-transparent max-h-20 z-1 flex flex-row justify-between">
+      <div className=" fixed top-0 left-0  w-full bg-transparent max-h-20 z-10 flex flex-row justify-between ">
         <img
           className="w-60  ml-14 px-8 py-2 opacity-100"
           src={LOGO}
