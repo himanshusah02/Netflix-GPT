@@ -1,5 +1,6 @@
 import React from "react";
-
+import { FaPlay } from "react-icons/fa";
+import { FiAlertCircle } from "react-icons/fi";
 function VideoTitle({ title, overview }) {
   // console.log(title, overview);
   return (
@@ -7,11 +8,17 @@ function VideoTitle({ title, overview }) {
       <h1 className="text-7xl font-bold mt-100 pl-14">{title}</h1>
       <h4 className="text-xl w-1/2 pl-16 mt-2">{overview}</h4>
       <div className="mt-4 gap-10 pl-16 flex flex-row">
-        <button className="bg-white text-black text-2xl p-1 w-32 rounded-md mr-10">
-          PLAY
+        <button className="bg-white text-black text-2xl text-center  w-24 h-10 rounded-md ">
+          <div className="flex flex-row gap-1 justify-around items-center px-1">
+            <FaPlay />
+            <p>Play</p>
+          </div>
         </button>
-        <button className="bg-gray-500 transparent-50% text-xl p-2 w-32 rounded-md">
-          MORE INFO
+        <button className="bg-gray-500 transparent-50%  w-34 rounded-md">
+          <div className="flex flex-row gap-1 items-center px-1">
+            <FiAlertCircle className="text-3xl" />
+            <p>MORE-INFO</p>
+          </div>
         </button>
       </div>
     </div>

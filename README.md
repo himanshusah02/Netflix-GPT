@@ -16,7 +16,14 @@
 -BugFix - if the user is not logged in that is not redirect to the /browse page
 - unsubscribe() to the onAuthStateChanged callback
 - use TMDB movie API and login for fetch movies data 
-
+- custom-hook for now playing movies
+- create movieSlice
+- update store with movies data
+- planning the maincontainer & secondary container
+- Fetch data for trailer video
+- Update store with trailer video Data
+- embedded the utube video 
+- build secondary container data
 # Features 
 - Login / Signup
   - Sign In / Sign up Form 
