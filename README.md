@@ -24,6 +24,10 @@
 - Update store with trailer video Data
 - embedded the utube video 
 - build secondary container data
+- Build movie list
+- Build movie card
+- TMDB API popular movie list (usePopular hook)
+- Browser page amazing with tailwind
 # Features 
 - Login / Signup
   - Sign In / Sign up Form 
