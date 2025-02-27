@@ -1,22 +1,24 @@
 import React from "react";
 import MoviesList from "./MoviesList";
 import { useSelector } from "react-redux";
+import useTopRatedMovies from "../hooks/useTopRatedMovies";
 
 function SecondaryContainer() {
   const movies = useSelector((store) => store.movies);
+
   return (
     <div className="bg-black">
-      <div className="-mt-48 relative z-30 text-white">
+      <div className="-mt-48 relative  text-white">
         <div>
           <MoviesList title={"Now Playing"} movies={movies.nowPlayingMovies} />
           <MoviesList title={"Popular"} movies={movies.popularMovies} />
           <MoviesList
-            title={"You watch hestory"}
-            movies={movies.nowPlayingMovies}
+            title={"Top Rated Movies"}
+            movies={movies.topRatedMovies}
           />
           <MoviesList
-            title={"Because you watch this"}
-            movies={movies.nowPlayingMovies}
+            title={"Upcoming Movies"}
+            movies={movies.upcomingMovies}
           />
         </div>
       </div>
