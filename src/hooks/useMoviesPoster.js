@@ -8,11 +8,11 @@ const useMoviesPoster = (movieId) => {
       API_OPTIONS
     );
     const json = (await data).json();
-    console.log(json);
+
 
     const filterPoster = json.result.
     backdrop_path;
-   console.log(filterPoster);
+
   };
   useEffect(() => {
     getMoviesPoster();

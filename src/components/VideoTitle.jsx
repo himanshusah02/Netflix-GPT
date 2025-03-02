@@ -2,7 +2,7 @@ import React from "react";
 import { FaPlay } from "react-icons/fa";
 import { FiAlertCircle } from "react-icons/fi";
 function VideoTitle({ title, overview }) {
-  // console.log(title, overview);
+
   return (
     <div className="w-screen aspect-video absolute text-white bg-gradient-to-r from-black">
       <h1 className="text-7xl font-bold mt-100 pl-14">{title}</h1>

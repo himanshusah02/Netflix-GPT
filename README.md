@@ -36,8 +36,10 @@ mainContainer
 - Build movie card
 - TMDB API popular movie list (usePopular hook)
 - Browser page amazing with tailwind
-- 
-
+- gpt search Page
+- Gpt Search Bar
+- (Feature)Multi-language search Feature in our app
+- GPT API
 # Features
 
 - Login / Signup

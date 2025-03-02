@@ -11,7 +11,7 @@ import { checkValidData } from "../utils/Validate";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
-import { USER_AVTAR } from "../utils/Constants";
+import { BackGround_Photo, USER_AVTAR } from "../utils/Constants";
 import { addUser } from "../utils/userSlice";
 import { auth } from "../utils/firebase";
 
@@ -25,7 +25,6 @@ const Login = () => {
   const password = useRef(null);
   const displayName = useRef(null);
 
-  // console.log(displayName);
   const handleClick = (e) => {
     e.preventDefault();
     // validate the  form data
@@ -67,7 +66,7 @@ const Login = () => {
               setErrorMessage(error.message);
               // ...
             });
-          // console.log(user);
+
           // ...
         })
         .catch((error) => {
@@ -86,7 +85,7 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          // console.log(user);
+
           navigate("/browse");
           // ...
         })
@@ -105,10 +104,7 @@ const Login = () => {
       <Header />
 
       <div className="h-screen w-screen overflow-hidden brightness-50 ">
-        <img
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/fb5cb900-0cb6-4728-beb5-579b9af98fdd/web/IN-en-20250127-TRIFECTA-perspective_cf66f5a3-d894-4185-9106-5f45502fc387_small.jpg"
-          alt=""
-        />
+        <img src={BackGround_Photo} alt="" />
       </div>
 
       {/* this the login form  */}
