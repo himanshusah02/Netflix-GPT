@@ -24,33 +24,26 @@ const GptSearchBar = () => {
   };
 
   const handleGptSearchClick = async () => {
-
-
     const prompt =
       "act as a movies recommendation system and suggest some movies for the Query :" +
       searchText.current.value +
       "only give the 5 movies , comma seperated like the example result given ahead example : gadar, solleye ,don,border,golmal, dill wale le jayenge dulhaniya ";
 
-  
     try {
       const result = await model.generateContent(prompt);
-    
+
       const moviesList = result.response.text().split(/\s*,\s*/);
-    
-    
 
       if (!moviesList) {
         console.log("null");
       }
       const data = moviesList.map((movie) => serchMovieTMDB(movie));
-    
 
       const tmdbMovieResult = await Promise.all(data);
 
-   
       dispatch(
         addAiMovieResult({
-          MoviesName: moviesName,
+          MoviesName: moviesList,
           moviesResult: tmdbMovieResult,
         })
       );
@@ -60,16 +53,16 @@ const GptSearchBar = () => {
   };
 
   return (
-    <div className="w-3/4 m-auto bg-red-200 rounded-4xl">
-      <form onSubmit={(e) => e.preventDefault()}>
+    <div className="w-1/2 m-auto  rounded-3xl ">
+      <form onSubmit={(e) => e.preventDefault()} >
         <input
           ref={searchText}
           type="text"
-          className="m-6 p-6 text-4xl   w-3/4 border outline-1 content-center origin-center rounded-3xl"
+          className="m-2 p-3 text-2xl w-3/4 border text-white border-none   content-center origin-center rounded-3xl bg-[#303030] mt-32 "
           placeholder={lang[langKey].gptSearchPlaceholder}
         />
         <button
-          className="bg-green-500 w-32  p-4 rounded-4xl text-2xl border"
+          className="bg-red-600 text-white w-32  p-1 rounded-4xl text-2xl "
           onClick={handleGptSearchClick}
         >
           {lang[langKey].search}

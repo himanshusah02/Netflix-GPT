@@ -5,11 +5,8 @@ import { BackGround_Photo } from "../utils/Constants";
 
 const GptSearch = () => {
   return (
-    <div className="h-screen w-screen overflow-hidden brightness-100 relative ">
-      <div className="absolute -z-10">
-        <img src={BackGround_Photo} alt="" />
-      </div>
-      <div className="mt-40  ">
+    <div className=" w-screen h-screen overflow-auto brightness-100  bg-[#212121] ">
+      <div className=" bg-[#212121]  ">
         <GptSearchBar />
         <GptMoviesSuggetion />
       </div>
