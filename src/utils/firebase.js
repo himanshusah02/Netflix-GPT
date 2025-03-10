@@ -2,20 +2,25 @@
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: import.meta.process?.env?.FIREBASE_KEY,
-  authDomain: "netflix-gpt-55fd5.firebaseapp.com",
-  projectId: "netflix-gpt-55fd5",
-  storageBucket: "netflix-gpt-55fd5.firebasestorage.app",
-  messagingSenderId: "979493040182",
-  appId: "1:979493040182:web:cb0c13056e4e111c082897",
-  measurementId: "G-7S71KLL76L"
+  apiKey:import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
 };
+
+// console.log("ENV VARIABLES:", import.meta.env);
+
+// console.log("Firebase Config:", firebaseConfig);
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
