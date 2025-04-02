@@ -61,14 +61,24 @@ const Header = () => {
     dispatch(changeLanguage(e.target.value));
   };
   return (
-    <div >
-      <div className=" fixed top-0 left-0 lg:w-full lg:bg-transparent lg:max-h-20 z-10 flex lg:flex-row lg:justify-between sm:  ">
-        <img className="w-60  ml-14 px-8 py-2 opacity-100 " src={LOGO} alt="" />
+    <div>
+      <div className=" fixed top-0 left-0 w-full bg-transparent lg:w-full lg:bg-transparent lg:max-h-20 z-10 flex lg:flex-row lg:justify-between border border-white ">
+        <img
+          className="w-40 lg:w-60 lg:ml-14 px-2 lg:px-8 py-2 opacity-100 "
+          src={LOGO}
+          alt=""
+        />
         {user && (
           <div className="flex flex-row text-white ">
+            <button
+              className=" mt-4 mb-4 p-1 lg:m-4 lg:p-3 text-[15px] bg-purple-500 rounded-2xl lg:rounded-4xl"
+              onClick={handleGptSearchClick}
+            >
+              {showGptSearch ? "HomePage" : "GPT Search"}
+            </button>
             {showGptSearch && (
               <select
-                className="bg-black text-white"
+                className="bg-transparent text-white w-20 text-[14px]"
                 onClick={handleLanguageChange}
               >
                 {SUPPORTED_LANG.map((lang) => (
@@ -78,12 +88,6 @@ const Header = () => {
                 ))}
               </select>
             )}
-            <button
-              className="m-4 p-3 bg-purple-500 rounded-4xl"
-              onClick={handleGptSearchClick}
-            >
-              {showGptSearch? "HomePage" : "GPT Search"}
-            </button>
 
             <img
               className="w-20 mr-10 p-3.5 opacity-100 rounded-full"

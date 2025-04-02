@@ -53,7 +53,7 @@ mainContainer
     - MovieSuggestions
       - MovieLists \* N
 
--NetflixGPT
+- NetflixGPT
 
-- Search Bar
-- Movie Suggestion
+  - Search Bar
+  - Movie Suggestion
