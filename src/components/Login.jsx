@@ -100,16 +100,19 @@ const Login = () => {
     setIsSignInForm(!isSignInForm);
   };
   return (
-    <div className="flex flex-col justify-between overflow-x-hidden z-10 bg-cover bg-center">
+    <div className="flex flex-col justify-between overflow-x-hidden z-10 bg-cover bg-center  ">
       <Header />
 
-      <div className="h-screen w-screen overflow-hidden brightness-50 ">
-        <img src={BackGround_Photo} alt="" />
+      <div className="  h-screen w-screen overflow-hidden brightness-50 ">
+        <div className="lg:w-screen lg:h-screen">
+        <img  src={BackGround_Photo} alt="" />
+        </div>
+        
       </div>
 
       {/* this the login form  */}
 
-      <div className=" mt-[54px]  w-[460px]  absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2  text-[#FFFFFF] font-semibold flex flex-col p-10 bg-black opacity-75 min-h-auto overflow-hidden ">
+      <div className=" mt-[54px]  w-[460px]   absolute top-90 lg:top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2  text-[#FFFFFF] font-semibold flex flex-col p-10 bg-black opacity-75 min-h-auto overflow-hidden ">
         <header className="text-4xl font-bold mb-6">
           <h1> {isSignInForm ? "Sign In" : "Sign Up"}</h1>
         </header>
@@ -126,7 +129,7 @@ const Login = () => {
               className="p-4  min-w-full rounded-sm outline outline-white placeholder-white "
             ></input>
           ) : (
-            <h1>WellCome Back</h1>
+            <h1>WelCome Back</h1>
           )}
 
           <input

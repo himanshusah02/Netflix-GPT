@@ -53,7 +53,7 @@ const GptSearchBar = () => {
   };
 
   return (
-    <div className="  m-auto  rounded-3xl border  ">
+    <div className="  m-auto  rounded-3xl  ">
       <form onSubmit={(e) => e.preventDefault()} >
         <input
           ref={searchText}

@@ -62,16 +62,16 @@ const Header = () => {
   };
   return (
     <div>
-      <div className=" fixed top-0 left-0 w-full bg-transparent lg:w-full lg:bg-transparent lg:max-h-20 z-10 flex lg:flex-row lg:justify-between border border-white ">
+      <div className=" fixed top-0 left-0 w-full  bg-transparent lg:bg-transparent lg:w-full  lg:max-h-20 z-10 lg:flex-row lg:justify-between flex justify-between  ">
         <img
-          className="w-40 lg:w-60 lg:ml-14 px-2 lg:px-8 py-2 opacity-100 "
+          className="w-32 lg:w-60 lg:ml-14 px-2 lg:px-8 py-2 opacity-100 "
           src={LOGO}
           alt=""
         />
         {user && (
           <div className="flex flex-row text-white ">
             <button
-              className=" mt-4 mb-4 p-1 lg:m-4 lg:p-3 text-[15px] bg-purple-500 rounded-2xl lg:rounded-4xl"
+              className=" mt-6 mb-6 p-1 lg:m-4 lg:p-3 text-[12px] bg-purple-500 rounded-2xl lg:rounded-4xl"
               onClick={handleGptSearchClick}
             >
               {showGptSearch ? "HomePage" : "GPT Search"}
@@ -90,12 +90,12 @@ const Header = () => {
             )}
 
             <img
-              className="w-20 mr-10 p-3.5 opacity-100 rounded-full"
+              className="w-20 lg:mr-10 p-3.5 opacity-100 rounded-full"
               src={user?.photoURL}
               alt=""
             />
             <button
-              className="m-3 w-20 font-bold text-center rounded-4xl bg-red-600"
+              className="mt-5 mb-5 w-20 text-[12px] lg:font-bold text-center rounded-4xl bg-red-600"
               onClick={handleClick}
             >
               Signout
