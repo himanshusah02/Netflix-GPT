@@ -62,14 +62,14 @@ const Header = () => {
   };
   return (
     <div>
-      <div className=" fixed top-0 left-0 w-full  bg-transparent lg:bg-transparent lg:w-full  lg:max-h-20 z-10 lg:flex-row lg:justify-between flex justify-between  ">
+      <div className=" fixed top-0 left-0 w-full bg-black lg:bg-transparent  lg:max-h-20 z-10 lg:flex-row lg:justify-between flex justify-between  ">
         <img
           className="w-32 lg:w-60 lg:ml-14 px-2 lg:px-8 py-2 opacity-100 "
           src={LOGO}
           alt=""
         />
         {user && (
-          <div className="flex flex-row text-white ">
+          <div className="flex flex-row text-white lg:mr-10 ">
             <button
               className=" mt-6 mb-6 p-1 lg:m-4 lg:p-3 text-[12px] bg-purple-500 rounded-2xl lg:rounded-4xl"
               onClick={handleGptSearchClick}

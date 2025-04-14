@@ -25,4 +25,4 @@ const GptMoviesSuggetion = () => {
 };
 
 export default GptMoviesSuggetion;
-// movies={moviesResult[0]}
+

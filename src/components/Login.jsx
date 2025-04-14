@@ -100,14 +100,13 @@ const Login = () => {
     setIsSignInForm(!isSignInForm);
   };
   return (
-    <div className="flex flex-col justify-between overflow-x-hidden z-10 bg-cover bg-center  ">
+    <div className="flex flex-col justify-between overflow-x-hidden z-10 bg-cover bg-center bg-black  ">
       <Header />
 
       <div className="  h-screen w-screen overflow-hidden brightness-50 ">
-        <div className="lg:w-screen lg:h-screen">
-        <img  src={BackGround_Photo} alt="" />
+        <div className="lg:w-screen lg:h-screen hidden bg-black">
+          <img src={BackGround_Photo} alt="" />
         </div>
-        
       </div>
 
       {/* this the login form  */}
