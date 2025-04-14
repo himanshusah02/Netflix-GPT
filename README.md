@@ -57,3 +57,5 @@ mainContainer
 
   - Search Bar
   - Movie Suggestion
+ 
+    [Live link](https://netflix-gpt-six-blond.vercel.app/)
